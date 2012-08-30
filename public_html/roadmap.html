@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>flod.us</title>
+    <title>flod.us | Roadmap</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -61,10 +61,51 @@
     <div class="container-fluid">
       <div class="row-fluid">
         <div class="span6">
-          <h2>FLOD</h2>
+          <h3>IDEAS</h3>
           <p>
-            Flod is coming soon.
+            This list represents features and suggestions.  It is unsorted and
+            makes no attempt to identify cost, feasibility or utility.
           </p>
+          <ul>
+            <li>Automatically tagging clean commits</li>
+            <li>Automatically generate dev tarballs from clean commits</li>
+            <li>Central status dashboard</li>
+            <li>Project status widget</li>
+            <li>Project commit backfill</li>
+            <li>Specifiable root dir</li>
+            <li>Commit rebuild</li>
+            <li>Dependency enumeration</li>
+            <li>Revocable security tokens</li>
+            <li>Calculate and display build times</li>
+            <li>Only build 'recent' commits</li>
+            <li>Allow/deny list for branches, specified by project</li>
+            <li>Support non-default make targets</li>
+            <li>Support MAKEFLAGS</li>
+            <li>Satellite 'nice' for builds</li>
+            <li>Satellite clone proxy, cleared on idle</li>
+            <li>Work timeout based on statistics</li>
+            <li>Ignore list for file types, so a README change doesn't force a build</li>
+            <li>Support svn</li>
+            <li>Support hg</li>
+            <li>Support autoconf</li>
+            <li>Support configure</li>
+          </ul>
+        </div>
+        <div class="span6">
+          <h3>ROADMAP</h3>
+          <p>
+            This list is composed from ideas.  It is crudely separated into two
+            sections that represent time, releases or immediate need.  As the
+            lists grow, more sections will be needed.
+          </p>
+          <h4>IMMEDIATE</h4>
+          <ul>
+            <li>Allow/deny list for satellites</li>
+          </ul>
+          <h4>FUTURE</h4>
+          <ul>
+            <li>SSL communication, optional</li>
+          </ul>
         </div>
       </div>
 
@@ -90,17 +131,18 @@
     <script src="./assets/js/bootstrap-carousel.js"></script>
     <script src="./assets/js/bootstrap-typeahead.js"></script>
 
-    <!-- Piwik --> 
+    <!-- Piwik -->
     <script type="text/javascript">
     var pkBaseURL = (("https:" == document.location.protocol) ? "https://tasktools.org/piwik/" : "http://tasktools.org/piwik/");
     document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
     </script><script type="text/javascript">
     try {
-    var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", 6);
+    var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", 3);
     piwikTracker.trackPageView();
     piwikTracker.enableLinkTracking();
     } catch( err ) {}
-    </script><noscript><p><img src="http://tasktools.org/piwik/piwik.php?idsite=6" style="border:0" alt="" /></p></noscript>
-    <!-- End Piwik Tracking Code -->
+    </script><noscript><p><img src="http://tasktools.org/piwik/piwik.php?idsite=3" style="border:0" alt="" /></p></noscript>
+    <!-- End Piwik Tag -->
   </body>
 </html>
+
