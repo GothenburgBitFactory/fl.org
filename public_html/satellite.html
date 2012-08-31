@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>flod.us | Central</title>
+    <title>flod.us | Satellite</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -73,66 +73,70 @@
           <div class="well sidebar-nav">
             <ul class="nav nav-list">
               <li class="nav-header">Contents</li>
-              <li class="active"><a href="#central">Central Node</a></li>
-              <li><a href="#data">Data Storage</a></li>
-              <li><a href="#build">Build Request</a></li>
-              <li><a href="#queue">Work Queue</a></li>
-              <li><a href="#hook">Hooks</a></li>
-              <li><a href="#semaphore">Semaphores</a></li>
-              <li><a href="#security">Security</a></li>
+              <li class="active"><a href="#satellite">Satellite Node</a></li>
+              <li><a href="#scratch">Scratch Space</a></li>
+              <li><a href="#access">Access Control</a></li>
             </ul>
           </div>
         </div>
         <div class="span9">
           <div class="row-fluid">
             <div>
-              <a name="central"></a>
-              <h3>Central Node</h3>
+              <a name="satellite"></a>
+              <h3>Satellite Node</h3>
               <p>
-                The central node is a server.  It is typically run continuously
-                on a machine that is available in terms of uptime and
-                connectivity.  It can be run either as a daemon, or simply a
-                long-running process.
-
-                Its purpose is to coordinate the build/test effort, and provide
-                analysis.  There is typically one central node supporting
-                multiple projects.
+                The satellite node is a client of the central server.  Its
+                purpose is to check with central to determine whether there
+                are any suitable projects to build and test, then perform
+                the work and report back the results.
+              </p>
+              <p>
+                Typically there is one satellite node running on each of the
+                platforms being tested.  If there are multiple satellites with
+                the same identifying label, running on one or more machines,
+                then the workload is shared among them.  A satellite can be
+                run continuously, or started and stopped at will.  It is common
+                to run a satellite with a command line option so that it exits
+                once the work queue is depleted.
+              </p>
+              <p>
+                A satellite node is a complete development environment.  This
+                requires the full toolchain for each of the projects under test.
               </p>
             </div>
             <div>
-              <a name="data"></a>
-              <h3>Data Storage</h3>
+              <a name="scratch"></a>
+              <h3>Scratch Space</h3>
               <p>
+                A satellite operates entirely out of a scratch directory, in
+                which it will copy the code, build and test.  The location is
+                configurable, and can be placed anywhere that is accessible.
+                A fast device such as an SSD is a good choice.
               </p>
             </div>
             <div>
-              <a name="build"></a>
-              <h3>Build Request</h3>
+              <a name="access"></a>
+              <h3>Access Control</h3>
               <p>
+                The operator of a satellite node has control over which projects
+                are tested.  This is because the central server may host many
+                projects, and satellite operators may not wish to test all
+                projects.
               </p>
-            </div>
-            <div>
-              <a name="queue"></a>
-              <h3>Work Queue</h3>
               <p>
+                Project testing operates on an opt-in basis.  This means that by
+                default, a satellite will not test any projects.  There are two
+                configuration settings that control this: an allow list, and a
+                deny list.  The default settings are:
               </p>
-            </div>
-            <div>
-              <a name="hook"></a>
-              <h3>Hooks</h3>
+              <pre>satellite.allow=
+satellite.deny=all</pre>
               <p>
-              </p>
-            </div>
-            <div>
-              <a name="semaphore"></a>
-              <h3>Semaphores</h3>
-              <p>
-              </p>
-            </div>
-            <div>
-              <a name="security"></a>
-              <h3>Security</h3>
-              <p>
+                The two entries are comma-separated lists of project names.
+                There are two special values, <code>all</code> and
+                <code>none</code> which are wild-cards.  Note that to allow
+                <code>none</code> and to deny <code>all</code> are equivalent,
+                but the deny list always overrides the allow list.
               </p>
             </div>
           </div>
