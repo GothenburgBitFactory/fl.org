@@ -84,13 +84,37 @@
               <a name="dev"></a>
               <h3>Dev Node</h3>
               <p>
+                The dev node is the originator of the events that trigger
+                builds.  When a dev node is initialized, a hook script is
+                installed in the repository.  That hook script is responsible
+                for notifying central of the change.
+              
               </p>
             </div>
             <div>
               <a name="hook"></a>
               <h3>SCM Hooks</h3>
               <p>
+                Using git as an example, one of two hook scripts may be
+                installed.  The first is a post-commit hook, that is suitable
+                for a local repository.  For every commit, it notifies central.
+                This is the default hook script that is installed.
+
+                The second type is a post-receive hook, suitable for shared
+                repositories.  For every 'git push', a list of commits is
+                determined, and central is notified for each of those commits.
               </p>
+              <p>
+                The hook scripts are lightweight - they simply connect to
+                central, and send the data, which is stored and not acted upon
+                synchronously.  The flod command used is this:
+              </p>
+              <pre>flod build \
+     --branch &lt;branch&gt; \
+     --commit &lt;commit&gt; \
+     --author "&lt;author&gt;" \
+     --timestamp &lt;timestamp&gt;
+</pre>
             </div>
           </div>
         </div>

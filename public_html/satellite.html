@@ -76,6 +76,7 @@
               <li class="active"><a href="#satellite">Satellite Node</a></li>
               <li><a href="#scratch">Scratch Space</a></li>
               <li><a href="#access">Access Control</a></li>
+              <li><a href="#sponsor">Sponsor</a></li>
             </ul>
           </div>
         </div>
@@ -137,6 +138,21 @@ satellite.deny=all</pre>
                 <code>none</code> which are wild-cards.  Note that to allow
                 <code>none</code> and to deny <code>all</code> are equivalent,
                 but the deny list always overrides the allow list.
+              </p>
+            </div>
+            <div>
+              <a name="sponsor"></a>
+              <h3>Sponsor</h3>
+              <p>
+                To acknowledge the generous donation of a satellite node, if the
+                following configuration setting is provided by the satellite,
+                then it is transmitted along with any build and test results to
+                central.
+              </p>
+              <pre>satellite.sponsor=&lt;User description&gt;</pre>
+              <p>
+                The details may then be included in reports.  It is a way of
+                identifying the source of the satellite, and thanking the donor.
               </p>
             </div>
           </div>
