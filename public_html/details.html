@@ -67,9 +67,11 @@
           <div class="well sidebar-nav">
             <ul class="nav nav-list">
               <li class="nav-header">Contents</li>
-              <li class="active"><a href="#what">What is flod?</a></li>
+              <li><a href="#what">What is flod?</a></li>
               <li><a href="#how">How does it work?</a></li>
-              <li class="nav-header">Examples</li>
+              <li class="nav-header">Use Cases</li>
+              <li><a href="#donate">Use Case: Donating Resources to a Project</a></li>
+              <li><a href="#hosting">Use Case: Your Own Project</a></li>
             </ul>
           </div>
         </div>
@@ -188,6 +190,44 @@ flod build --branch v1.2.3 \
                 reports on receipt of data from satellites.  The hooks can
                 trigger other programs that, for example, create dev snapshot
                 tarballs, check for clean builds and clean test runs and so on.
+              </p>
+            </div>
+            <div>
+              <a name="donate"></a>
+              <h3>Use Case: Donating Resources to a Project</h3>
+              <p>
+                You can donate testing resources to a project, by running a
+                satellite node only.  This means that your installation would
+                connect to a remote
+                <a href="central.html">central node</a>
+                and perform builds at its request.  
+
+                This is a valuable way to contribute to a project and Flod
+                provides you with feature to allow you to control and limit
+                involvement.
+              </p>
+              <p>
+                See
+                <a href="donor.html">setting up a test donor</a>
+                for details on how to do this.
+              </p>
+            </div>
+            <div>
+              <a name="hosting"></a>
+              <h3>Use Case: Hosting Your Own Project</h3>
+              <p>
+                You can also host your own continuous integration system, which
+                means you will run a
+                <a href="central.html">central node</a>,
+                a
+                <a href="dev.html">dev node</a>,
+                and one or more
+                <a href="satellite.html">satellite nodes</a>.
+              </p>
+              <p>
+                See
+                <a href="hosting.html">setting up a full Flod system</a>
+                for details on how to do this.
               </p>
             </div>
           </div>

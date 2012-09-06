@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>flod.us | Configuration</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <link href='http://fonts.googleapis.com/css?family=Droid+Sans+Mono:regular' rel='stylesheet' type='text/css'>
+    <link href="./assets/css/bootstrap.css" rel="stylesheet">
+    <link href="./assets/css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="./assets/css/docs.css" rel="stylesheet">
+    <style>
+      body {
+        font-family: "Droid Sans Mono", Helvetica, Arial, sans-serif;
+        font-size: 14px;
+      }
+    </style>
+
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <link rel="shortcut icon" href="assets/ico/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="assets/ico/apple-touch-icon-57-precomposed.png">
+  </head>
+
+  <body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="brand" href="./index.html">flod.us</a>
+          <div class="nav-collapse">
+            <ul class="nav">
+              <li><a href="http://tasktools.org">tasktools.org</a></li>
+              <li><a href="http://taskwarrior.org">taskwarrior.org</a></li>
+            </ul>
+
+            <ul class="nav pull-right">
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contact<b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <li><a href="mailto:support@flod.us">flod Support</a></li>
+                  <li><a href="mailto:support@taskwarrior.org">taskwarrior Support</a></li>
+                  <li><a href="mailto:support@yootabory.org">yootabory Support</a></li>
+                </ul>
+              </li>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+
+    <div class="container-fluid">
+      <div class="row-fluid">
+        <div class="span3">
+          <br />
+          <div class="well sidebar-nav">
+            <ul class="nav nav-list">
+              <li class="nav-header">Contents</li>
+              <li><a href="#config">Configuration</a></li>
+              <li><a href="#settings">Settings</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="span9">
+          <div class="row-fluid">
+            <div>
+              <a name="config"></a>
+              <h3>Configuration</h3>
+              <p>
+                Configuration settings are manipulated by the 'config' command.
+                There are four variations:
+              </p>
+              <pre>$ flod config name value
+$ flod config name ''
+$ flod config name
+$ flod config</pre>
+              <p>
+                The first command, with both a name and a value will create or
+                overwrite the setting.  The second command, with a blank value
+                will delete any existing value, but retain the setting.  The
+                third will delete the entry from the configuration file.  The
+                fourth command, with no name or value, will enumerate all the
+                stored name/value pairs.
+              </p>
+            </div>
+            <div>
+              <a name="settings"></a>
+              <h3>Settings</h3>
+              <p>
+                <table class="table table-condensed table-bordered">
+                  <thead>
+                    <tr>
+                      <th>Setting</th>
+                      <th>Default</th>
+                      <th>Meaning</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>build.type</td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td>central.admin</td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td>central.ip.log</td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td>central.log</td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td>central.pid.file</td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td>central.queue</td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td>central.request.limit</td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td>central.server</td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td>central.work.timeout</td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td>extensions</td>
+                      <td>/usr/local/libexec/flod</td>
+                      <td>
+                        The location of the extension scripts.  This is set by
+                        the 'init' command and should not be modified.
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>flod.config.dir</td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td>hook.on.build</td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td>hook.on.new.branch</td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td>hook.on.new.commit</td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td>hook.on.new.project</td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td>hook.on.obtain</td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td>hook.on.post</td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td>hook.on.pre</td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td>hook.on.prebuild</td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td>hook.on.test</td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td>installation.type</td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td>prebuild.type</td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td>project.description</td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td>project.dir</td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td>project.name</td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td>satellite.admin</td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td>satellite.allow</td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td>satellite.delay</td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td>satellite.deny</td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td>satellite.label</td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td>satellite.log</td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td>satellite.log.verbose</td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td>satellite.scratch</td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td>satellite.sponsor</td>
+                      <td></td>
+                      <td>
+                        <p>
+                          This is the name of the satellite donor.  It can be
+                          left blank, but is an opportunity to make it known
+                          that you are donating resources to a project.  This
+                          could be a company name, nickname, etc.  HTML entities
+                          will be encoded.
+                        </p>
+                        <p>
+                          The value will appear in the column headers on certain
+                          reports.
+                        </p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>satellite.startup.delay</td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td>scm.branch</td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td>scm.config.dir</td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td>scm.hook.type</td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td>scm.hooks.installed</td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td>scm.origin</td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td>scm.type</td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td>test.type</td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td>verbose</td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div> <!-- /container -->
+
+    <footer class="footer">
+      <div class="container">
+        <p>
+          Copyright &copy; 2012,
+          <a href="http://tasktools.org/about.html">Göteborg Bit Factory</a>.
+        </p>
+      </div>
+    </footer>
+
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="assets/js/jquery.js"></script>
+    <script src="assets/js/google-code-prettify/prettify.js"></script>
+    <script src="assets/js/bootstrap-transition.js"></script>
+    <script src="assets/js/bootstrap-alert.js"></script>
+    <script src="assets/js/bootstrap-modal.js"></script>
+    <script src="assets/js/bootstrap-dropdown.js"></script>
+    <script src="assets/js/bootstrap-scrollspy.js"></script>
+    <script src="assets/js/bootstrap-tab.js"></script>
+    <script src="assets/js/bootstrap-tooltip.js"></script>
+    <script src="assets/js/bootstrap-popover.js"></script>
+    <script src="assets/js/bootstrap-button.js"></script>
+    <script src="assets/js/bootstrap-collapse.js"></script>
+    <script src="assets/js/bootstrap-carousel.js"></script>
+    <script src="assets/js/bootstrap-typeahead.js"></script>
+    <script src="assets/js/bootstrap-affix.js"></script>
+
+    <!-- Piwik --> 
+    <script type="text/javascript">
+    var pkBaseURL = (("https:" == document.location.protocol) ? "https://tasktools.org/piwik/" : "http://tasktools.org/piwik/");
+    document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
+    </script><script type="text/javascript">
+    try {
+    var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", 6);
+    piwikTracker.trackPageView();
+    piwikTracker.enableLinkTracking();
+    } catch( err ) {}
+    </script><noscript><p><img src="http://tasktools.org/piwik/piwik.php?idsite=6" style="border:0" alt="" /></p></noscript>
+    <!-- End Piwik Tracking Code -->
+  </body>
+</html>
+

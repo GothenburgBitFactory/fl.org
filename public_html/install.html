@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>flod.us | Central</title>
+    <title>flod.us | Installation</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -67,66 +67,104 @@
           <div class="well sidebar-nav">
             <ul class="nav nav-list">
               <li class="nav-header">Contents</li>
-              <li><a href="#central">Central Node</a></li>
-              <li><a href="#data">Data Storage</a></li>
-              <li><a href="#build">Build Request</a></li>
-              <li><a href="#queue">Work Queue</a></li>
-              <li><a href="#hook">Hooks</a></li>
-              <li><a href="#semaphore">Semaphores</a></li>
-              <li><a href="#security">Security</a></li>
+              <li><a href="#installation">Installation</a></li>
+              <li><a href="#requirements">1. Requirements</a></li>
+              <li><a href="#download">2. Download</a></li>
+              <li><a href="#build">3. Build</a></li>
+              <li><a href="#test">4. Test</a></li>
+              <li><a href="#install">5. Install</a></li>
             </ul>
           </div>
         </div>
         <div class="span9">
           <div class="row-fluid">
             <div>
-              <a name="central"></a>
-              <h3>Central Node</h3>
+              <a name="installation"></a>
+              <h3>Installation</h3>
               <p>
-                The central node is a server.  It is typically run continuously
-                on a machine that is available in terms of uptime and
-                connectivity.  It can be run either as a daemon, or simply a
-                long-running process.
-
-                Its purpose is to coordinate the build/test effort, and provide
-                analysis.  There is typically one central node supporting
-                multiple projects.
+                Installation is straightforward and follows open source
+                conventions.  The whole installation process should take no more
+                than 5 minutes.
               </p>
             </div>
             <div>
-              <a name="data"></a>
-              <h3>Data Storage</h3>
+              <a name="requirements"></a>
+              <h3>1. Requirements</h3>
+              <p>
+                Flod requires the following toolchain:
+              </p>
+              <ul>
+                <li>git 1.7 or later</li>
+                <li>cmake 2.8.0 or later</li>
+                <li>make</li>
+                <li>g++ or equivalent compiler</li>
+                <li>Perl 5.8 or later</li>
+                <li>sh</li>
+              </ul>
+              <p>
+                If a project has requirements beyond those listed above, then
+                building and testing that project will only be possible if those
+                requirements are met.
+              </p>
+            </div>
+            <div>
+              <a name="download"></a>
+              <h3>2. Download</h3>
+              <p>
+                Currently you need to build Flod from source.  This means
+                getting a copy of the source repository using git.
+
+                Binary packages and source tarballs will be available later.
+              </p>
+              <pre>$ git clone git://tasktools.org/flod.git flod.git
+...</pre>
               <p>
               </p>
             </div>
             <div>
               <a name="build"></a>
-              <h3>Build Request</h3>
+              <h3>3. Build</h3>
               <p>
+                Build Flod just as you would build any cmake-based project.
+              </p>
+              <pre>$ cd flod.git
+$ cmake .
+...
+$ make
+...</pre>
+              <p>
+                If you see any errors or warnings, please report them to
+                <a href="mailto:support@flod.us">support@flod.us</a>.
               </p>
             </div>
             <div>
-              <a name="queue"></a>
-              <h3>Work Queue</h3>
+              <a name="test"></a>
+              <h3>4. Test</h3>
               <p>
+              </p>
+              <pre>$ make test
+...</pre>
+              <p>
+                If you see any errors or warnings, please report them to
+                <a href="mailto:support@flod.us">support@flod.us</a>.
               </p>
             </div>
             <div>
-              <a name="hook"></a>
-              <h3>Hooks</h3>
+              <a name="install"></a>
+              <h3>5. Install</h3>
               <p>
+                Typical installation requires root.
               </p>
-            </div>
-            <div>
-              <a name="semaphore"></a>
-              <h3>Semaphores</h3>
+              <pre>$ sudo make install
+...</pre>
               <p>
+                Test your installation, by checking the version number.  You
+                should see no errors.
               </p>
-            </div>
-            <div>
-              <a name="security"></a>
-              <h3>Security</h3>
+              <pre>$ flod --version
+0.19.0</pre>
               <p>
+                Congratulations, you have successfully installed Flod.
               </p>
             </div>
           </div>

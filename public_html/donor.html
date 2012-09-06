@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>flod.us | Use Cases</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <link href='http://fonts.googleapis.com/css?family=Droid+Sans+Mono:regular' rel='stylesheet' type='text/css'>
+    <link href="./assets/css/bootstrap.css" rel="stylesheet">
+    <link href="./assets/css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="./assets/css/docs.css" rel="stylesheet">
+    <style>
+      body {
+        font-family: "Droid Sans Mono", Helvetica, Arial, sans-serif;
+        font-size: 14px;
+      }
+    </style>
+
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <link rel="shortcut icon" href="assets/ico/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="assets/ico/apple-touch-icon-57-precomposed.png">
+  </head>
+
+  <body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="brand" href="./index.html">flod.us</a>
+          <div class="nav-collapse">
+            <ul class="nav">
+              <li><a href="http://tasktools.org">tasktools.org</a></li>
+              <li><a href="http://taskwarrior.org">taskwarrior.org</a></li>
+            </ul>
+
+            <ul class="nav pull-right">
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contact<b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <li><a href="mailto:support@flod.us">flod Support</a></li>
+                  <li><a href="mailto:support@taskwarrior.org">taskwarrior Support</a></li>
+                  <li><a href="mailto:support@yootabory.org">yootabory Support</a></li>
+                </ul>
+              </li>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+
+    <div class="container-fluid">
+      <div class="row-fluid">
+        <div class="span3">
+          <br />
+          <div class="well sidebar-nav">
+            <ul class="nav nav-list">
+              <li class="nav-header">Contents</li>
+              <li><a href="#donate">Donating Testing Resources to a Project</a></li>
+              <li><a href="#scratch">Create a Work Directory</a></li>
+              <li><a href="#init">Initialize the Satellite</a></li>
+              <li><a href="#config">Configure the Satellite</a></li>
+              <li><a href="#run">Run the Satellite</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="span9">
+          <div class="row-fluid">
+            <div>
+              <a name="donate"></a>
+              <h3>Donating Testing Resources to a Project</h3>
+              <p>
+                You have made the decision to donate testing resources to a
+                project.  This is a significant contribution, and you will be
+                helping ensure portability and quality, simply by running Flod.
+
+                The first step is to
+                <a href="install.html">install flod</a>.
+              </p>
+            </div>
+            <div>
+              <a name="scratch"></a>
+              <h3>Create a Work Directory</h3>
+              <p>
+                The Flod satellite needs two directory to operate in.  The first
+                is the home where the configuration and log file are kept.  The
+                second is a scratch directory used for the builds and tests.
+                Ideally the scratch directory is on a fast storage device with
+                plenty of room.  Both directories needs to exist before
+                initialization.
+              </p>
+              <pre>$ mkdir -p /home/alice/satellite/scratch</pre>
+              <p>
+                The 'satellite' directory is the home, and the 'scratch'
+                directory is underneath, although these two directories could be
+                anywhere.
+              </p>
+            </div>
+            <div>
+              <a name="init"></a>
+              <h3>Initialize the Satellite</h3>
+              <p>
+                Initialization is the process of creating a default
+                configuration, and allowing command line overrides that will be
+                written to the configuration file.
+              </p>
+              <pre>$ cd /home/alice/satellite
+$ flod init \
+    --satellite \
+    --host tasktools.org \
+    --port 6543 \
+    --admin $PWD \
+    --scratch $PWD/scratch \
+    --satellite.delay=60 \
+    --satellite.log=$PWD/satellite.log \
+    --satellite.log.verbose=yes \
+    --satellite.startup.delay=10 \
+    --satellite.label=OSX_10.8_64 \
+    --satellite.sponsor=GBF
+</pre>
+              <p>
+                These configuration options are described in the man page
+                ('man flod'), and
+                <a href="config.html">here</a>.
+              </p>
+            </div>
+            <div>
+              <a name="config"></a>
+              <h3>Configure the Satellite</h3>
+              <p>
+                The example lacks any access control.  This is a pair of
+                configuration settings defining projects that are allowed and
+                denied.  By default, a satellite allows no projects, and denies
+                all.  This must be overridden: suppose the 'task.git' project is
+                to be tested.  The configuration must reflect this:
+              </p>
+              <pre>$ flod config satellite.allow task.git
+$ flod config satellite.deny</pre>
+              <p>
+                The first command specifies that the allowed projects are
+                'task.git'.  This is a comma-separated list of projects,
+                although in this case there is only one.  The second command
+                deletes any value for 'satellite.deny'.  You can view the
+                complete configuration using:
+              </p>
+              <pre>$ flod config
+...</pre>
+              <p>
+                Note that these command must be run from the 'satellite'
+                directory.
+              </p>
+              <p>
+                Note that these two settings could have been specified in the
+                'init' command from the previous step, but that wouldn't
+                demonstrate the 'config' command.
+              </p>
+            </div>
+            <div>
+              <a name="run"></a>
+              <h3>Run the Satellite</h3>
+              <p>
+                Now the satellite may be launched, and it will begin work.
+                There are several ways to run the satellite, the simplest
+                being:
+              </p>
+              <pre>$ flod satellite</pre>
+              <p>
+                The satellite can be killed at any time, using the 'kill'
+                command or typing Ctrl-C.
+
+                It might be more convenient to run the satellite in the
+                background, and protect it from the terminal window closing:
+              </p>
+              <pre>$ nohup flod satellite &amp;</pre>
+              <p>
+                Both of the above commands will run a satellite continuously.
+                You may wish instead to limit the resources consumed by the
+                satellite.  One method is to just run a few builds, in this
+                example, 10 builds:
+              </p>
+              <pre>$ flod satellite --10</pre>
+              <p>
+                After 10 builds, the satellite will exit.  Another option is
+                to run the satellite until the work queue is exhausted, then
+                exit.  You can do this using:
+              </p>
+              <pre>$ flod satellite --exit-on-idle</pre>
+              <p>
+                By combining the two, you can specify that the satellite should
+                run until the queue is exhausted, or until it performs 10
+                builds, whichever comes first:
+              </p>
+              <pre>$ flod satellite --10 --exit-on-idle</pre>
+              <p>
+                The latter commands are useful for when you want to run the
+                satellite from a crontab.  You could, for example, run the
+                satellite once a week from cron, and specify that it perform
+                at most 20 builds, and exit on work depletion.  This allows
+                you to make a significant contribution, but maintain control
+                over your resources.
+              </p>
+              <p>
+                The first time you run a satellite, you might want to restrict
+                it to just 1 build, and retain the scratch files, so you can
+                see what it did:
+              </p>
+              <pre>$ flod satellite --1 --keep
+$ ls scratch
+...</pre>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div> <!-- /container -->
+
+    <footer class="footer">
+      <div class="container">
+        <p>
+          Copyright &copy; 2012,
+          <a href="http://tasktools.org/about.html">Göteborg Bit Factory</a>.
+        </p>
+      </div>
+    </footer>
+
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="assets/js/jquery.js"></script>
+    <script src="assets/js/google-code-prettify/prettify.js"></script>
+    <script src="assets/js/bootstrap-transition.js"></script>
+    <script src="assets/js/bootstrap-alert.js"></script>
+    <script src="assets/js/bootstrap-modal.js"></script>
+    <script src="assets/js/bootstrap-dropdown.js"></script>
+    <script src="assets/js/bootstrap-scrollspy.js"></script>
+    <script src="assets/js/bootstrap-tab.js"></script>
+    <script src="assets/js/bootstrap-tooltip.js"></script>
+    <script src="assets/js/bootstrap-popover.js"></script>
+    <script src="assets/js/bootstrap-button.js"></script>
+    <script src="assets/js/bootstrap-collapse.js"></script>
+    <script src="assets/js/bootstrap-carousel.js"></script>
+    <script src="assets/js/bootstrap-typeahead.js"></script>
+    <script src="assets/js/bootstrap-affix.js"></script>
+
+    <!-- Piwik --> 
+    <script type="text/javascript">
+    var pkBaseURL = (("https:" == document.location.protocol) ? "https://tasktools.org/piwik/" : "http://tasktools.org/piwik/");
+    document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
+    </script><script type="text/javascript">
+    try {
+    var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", 6);
+    piwikTracker.trackPageView();
+    piwikTracker.enableLinkTracking();
+    } catch( err ) {}
+    </script><noscript><p><img src="http://tasktools.org/piwik/piwik.php?idsite=6" style="border:0" alt="" /></p></noscript>
+    <!-- End Piwik Tracking Code -->
+  </body>
+</html>
+
