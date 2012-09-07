@@ -167,8 +167,18 @@ $ flod config</pre>
                     </tr>
                     <tr>
                       <td>hook.on.build</td>
-                      <td></td>
-                      <td></td>
+                      <td>/path/to/script,/path/to/other/script</td>
+                      <td>
+                        <p>
+                          The 'on.build' event triggers a call to the scripts
+                          listed.  The 'on.build' event occurs after the receipt
+                          of a build log from a satellite.
+                        </p>
+                        <p>
+                          A comma-separated list of scripts to run.  The scripts
+                          are run in left-to-right order.
+                        </p>
+                      </td>
                     </tr>
                     <tr>
                       <td>hook.on.new.branch</td>
@@ -257,8 +267,19 @@ $ flod config</pre>
                     </tr>
                     <tr>
                       <td>satellite.label</td>
-                      <td></td>
-                      <td></td>
+                      <td>Ubuntu_12.10_64</td>
+                      <td>
+                        <p>
+                          A description of the satellite platform.  It is
+                          recommended that the distribution name, version
+                          and 32/64 information is included, as these are
+                          likely identify the different satellites.
+                        </p>
+                        <p>
+                          Any underscores in the value will be converted to
+                          spaces to allow text wrapping.
+                        </p>
+                      </td>
                     </tr>
                     <tr>
                       <td>satellite.log</td>
@@ -277,7 +298,7 @@ $ flod config</pre>
                     </tr>
                     <tr>
                       <td>satellite.sponsor</td>
-                      <td></td>
+                      <td>Alice B.</td>
                       <td>
                         <p>
                           This is the name of the satellite donor.  It can be
