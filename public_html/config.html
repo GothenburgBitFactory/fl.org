@@ -102,7 +102,7 @@ $ flod config</pre>
                   <thead>
                     <tr>
                       <th>Setting</th>
-                      <th>Default</th>
+                      <th>Default or Example</th>
                       <th>Meaning</th>
                     </tr>
                   </thead>
@@ -148,9 +148,34 @@ $ flod config</pre>
                       <td></td>
                     </tr>
                     <tr>
+                      <td>central.work.obsolete</td>
+                      <td>1month</td>
+                      <td>
+                        <p>
+                          Code changes become 'obsolete' after this period, and
+                          the code change is considered locked.
+
+                          All this means is that satellites will not be asked to
+                          build and test any code changes older than this.
+                        </p>
+                        <p>
+                          A missing value means no code changes are obsoleted.
+                        </p>
+                      </td>
+                    </tr>
+                    <tr>
                       <td>central.work.timeout</td>
-                      <td></td>
-                      <td></td>
+                      <td>1hour</td>
+                      <td>
+                        <p>
+                          If work is not completed withing the timeout period,
+                          then it is considered lost, and will become available
+                          for build/test again.
+                        </p>
+                        <p>
+                          A missing value means no timeout.
+                        </p>
+                      </td>
                     </tr>
                     <tr>
                       <td>extensions</td>
