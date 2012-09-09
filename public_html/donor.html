@@ -71,6 +71,7 @@
               <li><a href="#scratch">Create a Work Directory</a></li>
               <li><a href="#init">Initialize the Satellite</a></li>
               <li><a href="#config">Configure the Satellite</a></li>
+              <li><a href="#test">Test Connectivity</a></li>
               <li><a href="#run">Run the Satellite</a></li>
             </ul>
           </div>
@@ -122,12 +123,12 @@ $ flod init \
     --port 6543 \
     --admin $PWD \
     --scratch $PWD/scratch \
-    --satellite.delay=60 \
+    --satellite.delay=1min \
     --satellite.log=$PWD/satellite.log \
     --satellite.log.verbose=yes \
-    --satellite.startup.delay=10 \
+    --satellite.startup.delay=10sec \
     --satellite.label=OSX_10.8_64 \
-    --satellite.sponsor=GBF
+    --satellite.sponsor='My name'
 </pre>
               <p>
                 These configuration options are described in the man page
@@ -165,6 +166,26 @@ $ flod config satellite.deny</pre>
                 'init' command from the previous step, but that wouldn't
                 demonstrate the 'config' command.
               </p>
+            </div>
+            <div>
+              <a name="test"></a>
+              <h3>Test Connectivity</h3>
+              <p>
+                You can test connectivity by pinging the central server.
+                This requires that you have made arrangements to do so
+                first by
+                <a href="mailto:support@flod.us">emailing us</a>.
+              </p>
+              <pre>$ flod ping
+
+    Göteborg Bit Factory - Flod - Grid Testing
+ 
+                *** Warning ***
+    This is an alpha system undergoing tests.
+    Please report problems to support@flod.us
+         No unauthorized use permitted.
+
+Central flod 0.20.0-alpha, tasktools.org:6543, round trip 0.074726 sec.</pre>
             </div>
             <div>
               <a name="run"></a>
