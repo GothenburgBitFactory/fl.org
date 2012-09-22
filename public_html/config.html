@@ -124,8 +124,10 @@ $ flod config</pre>
                     </tr>
                     <tr>
                       <td>central.log</td>
-                      <td></td>
-                      <td></td>
+                      <td>/var/log/central.log</td>
+                      <td>
+                        Fully qualified path name for the central log file.
+                      </td>
                     </tr>
                     <tr>
                       <td>central.pid.file</td>
@@ -217,43 +219,126 @@ $ flod config</pre>
                     </tr>
                     <tr>
                       <td>hook.on.new.branch</td>
-                      <td></td>
-                      <td></td>
+                      <td>/path/to/script,/path/to/other/script</td>
+                      <td>
+                        <p>
+                          The 'on.new.branch' event triggers a call to thescripts
+                          listed.  The 'on.new.branch' event occurs after the
+                          receipt of a build notification for a branch not seen
+                          before.
+                        </p>
+                        <p>
+                          A comma-separated list of scripts to run.  The scripts
+                          are run in left-to-right order.
+                        </p>
+                      </td>
                     </tr>
                     <tr>
                       <td>hook.on.new.commit</td>
-                      <td></td>
-                      <td></td>
+                      <td>/path/to/script,/path/to/other/script</td>
+                      <td>
+                        <p>
+                          The 'on.new.commit' event triggers a call to the scripts
+                          listed.  The 'on.new.commit' event occurs after the
+                          receipt of a build notification for a commit not seen
+                          before.
+                        </p>
+                        <p>
+                          A comma-separated list of scripts to run.  The scripts
+                          are run in left-to-right order.
+                        </p>
+                      </td>
                     </tr>
                     <tr>
                       <td>hook.on.new.project</td>
-                      <td></td>
-                      <td></td>
+                      <td>/path/to/script,/path/to/other/script</td>
+                      <td>
+                        <p>
+                          The 'on.new.project' event triggers a call to the scripts
+                          listed.  The 'on.new.project' event occurs after the
+                          receipt of a build notification for a project not seen
+                          before.
+                        </p>
+                        <p>
+                          A comma-separated list of scripts to run.  The scripts
+                          are run in left-to-right order.
+                        </p>
+                      </td>
                     </tr>
                     <tr>
                       <td>hook.on.obtain</td>
-                      <td></td>
-                      <td></td>
+                      <td>/path/to/script,/path/to/other/script</td>
+                      <td>
+                        <p>
+                          The 'on.obtain' event triggers a call to the scripts
+                          listed.  The 'on.obtain' event occurs after the receipt
+                          of an obtain log from a satellite.
+                        </p>
+                        <p>
+                          A comma-separated list of scripts to run.  The scripts
+                          are run in left-to-right order.
+                        </p>
+                      </td>
                     </tr>
                     <tr>
                       <td>hook.on.post</td>
-                      <td></td>
-                      <td></td>
+                      <td>/path/to/script,/path/to/other/script</td>
+                      <td>
+                        <p>
+                          The 'on.post' event triggers a call to the scripts
+                          listed.  The 'on.post' event occurs after the receipt
+                          of a post log from a satellite.
+                        </p>
+                        <p>
+                          A comma-separated list of scripts to run.  The scripts
+                          are run in left-to-right order.
+                        </p>
+                      </td>
                     </tr>
                     <tr>
                       <td>hook.on.pre</td>
-                      <td></td>
-                      <td></td>
+                      <td>/path/to/script,/path/to/other/script</td>
+                      <td>
+                        <p>
+                          The 'on.pre' event triggers a call to the scripts
+                          listed.  The 'on.pre' event occurs after the receipt
+                          of a pre log from a satellite.
+                        </p>
+                        <p>
+                          A comma-separated list of scripts to run.  The scripts
+                          are run in left-to-right order.
+                        </p>
+                      </td>
                     </tr>
                     <tr>
                       <td>hook.on.prebuild</td>
-                      <td></td>
-                      <td></td>
+                      <td>/path/to/script,/path/to/other/script</td>
+                      <td>
+                        <p>
+                          The 'on.prebuild' event triggers a call to the scripts
+                          listed.  The 'on.prebuild' event occurs after the receipt
+                          of a prebuild log from a satellite.
+                        </p>
+                        <p>
+                          A comma-separated list of scripts to run.  The scripts
+                          are run in left-to-right order.
+                        </p>
+                      </td>
                     </tr>
                     <tr>
                       <td>hook.on.test</td>
-                      <td></td>
-                      <td></td>
+                      <td>/path/to/script,/path/to/other/script</td>
+                      <td>
+                        <p>
+                          The 'on.test' event triggers a call to the scripts
+                          listed.  The 'on.test' event occurs after the receipt
+                          of a test log from a satellite.
+                        </p>
+                        <p>
+                          A comma-separated list of scripts to run.  The scripts
+                          are run in left-to-right order.
+                        </p>
+                      </td>
                     </tr>
                     <tr>
                       <td>installation.type</td>
@@ -287,8 +372,22 @@ $ flod config</pre>
                     </tr>
                     <tr>
                       <td>satellite.allow</td>
-                      <td></td>
-                      <td></td>
+                      <td>
+                        task.git,flod.git<br />
+                        all<br />
+                        none
+                      </td>
+                      <td>
+                        <p>
+                          This is a comma-separated list of projects for which the
+                          satellite will perform builds and run tests.  A project
+                          must either be specifically allowed, or allowed via the
+                          'all' value.
+                        </p>
+                        <p>
+                          Note that a 'deny' value overrides an 'allow' value.
+                        </p>
+                      </td>
                     </tr>
                     <tr>
                       <td>satellite.delay</td>
@@ -297,8 +396,22 @@ $ flod config</pre>
                     </tr>
                     <tr>
                       <td>satellite.deny</td>
-                      <td></td>
-                      <td></td>
+                      <td>
+                        task.git,flod.git<br />
+                        all<br />
+                        none
+                      </td>
+                      <td>
+                        <p>
+                          This is a comma-separated list of projects for which
+                          the satellite will not perform builds and run tests.
+                          If a project is denied by name, it will not be built.
+                          The value 'all' will prevent all activity.
+                        </p>
+                        <p>
+                          Note that a 'deny' value overrides an 'allow' value.
+                        </p>
+                      </td>
                     </tr>
                     <tr>
                       <td>satellite.label</td>
@@ -318,13 +431,21 @@ $ flod config</pre>
                     </tr>
                     <tr>
                       <td>satellite.log</td>
-                      <td></td>
-                      <td></td>
+                      <td>/var/log/satellite.log</td>
+                      <td>
+                        Fully qualified path name for the satellite log file.
+                      </td>
                     </tr>
                     <tr>
                       <td>satellite.log.verbose</td>
-                      <td></td>
-                      <td></td>
+                      <td>
+                        yes<br />
+                        no
+                      </td>
+                      <td>
+                        When enabled, causes all satellite subtask results to be
+                        logged.
+                      </td>
                     </tr>
                     <tr>
                       <td>satellite.scratch</td>
