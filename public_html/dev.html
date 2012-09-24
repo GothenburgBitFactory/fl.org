@@ -68,6 +68,7 @@
             <ul class="nav nav-list">
               <li class="nav-header">Contents</li>
               <li><a href="#dev">Dev Node</a></li>
+              <li><a href="#discovery">Discovery</a></li>
               <li><a href="#hook">SCM Hooks</a></li>
             </ul>
           </div>
@@ -78,12 +79,40 @@
               <a name="dev"></a>
               <h3>Dev Node</h3>
               <p>
-                The dev node is the originator of the events that trigger
-                builds.  When a dev node is initialized, a hook script is
-                installed in the repository.  That hook script is responsible
-                for notifying central of the change.
-              
+                The dev node is the source of build requests.  The dev node is
+                initialized and the discovery process determines how to build
+                and test the project.  Then an SCM hook is installed that will
+                automatically send build notifications to
+                <a href="central.html">central</a>
+                for every commit.
               </p>
+              <p>
+              </p>
+            </div>
+            <div>
+              <a name="discovery"></a>
+              <h3>Discovery</h3>
+              <p>
+                When the dev node is initialized, the discovery process tries to
+                determine various characteristics of the project.  The SCM
+                system used is determined, including the repository location,
+                remote repository and project description.  Then a prebuild
+                system that generates makefiles is detected.  The makefile is
+                scanned to reveal 'test' targets.  Each part of the discovery
+                process is a separate extension script, which makes flod an
+                open-ended system, which will grow to support a great many
+                different project configurations.  This is detailed on the
+                <a href="diversity.html">diversity</a>
+                page.
+              </p>
+              <p>
+                The discovery process can be as simple as this:
+              </p>
+              <pre>$ flod init</pre>
+              <p>
+                But typically involves specifying a few parameters:
+              </p>
+              <pre>$ flod init --host tasktools.org --port 6543</pre>
             </div>
             <div>
               <a name="hook"></a>
@@ -103,7 +132,7 @@
                 central, and send the data, which is stored and not acted upon
                 synchronously.  The flod command used is this:
               </p>
-              <pre>flod build \
+              <pre>$ flod build \
      --branch &lt;branch&gt; \
      --commit &lt;commit&gt; \
      --author "&lt;author&gt;" \

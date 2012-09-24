@@ -71,6 +71,7 @@
               <li><a href="#scratch">Scratch Space</a></li>
               <li><a href="#access">Access Control</a></li>
               <li><a href="#sponsor">Sponsor</a></li>
+              <li><a href="#subtasks">Subtasks</a></li>
             </ul>
           </div>
         </div>
@@ -97,6 +98,11 @@
               <p>
                 A satellite node is a complete development environment.  This
                 requires the full toolchain for each of the projects under test.
+                This means that it is important that project dependency
+                requirements are met before the project is allowed via the
+                <code>satellite.allow</code> configuration setting.  It also
+                means that with if all projects are allowed, then the satellite
+                needs to meet the superset of all requirements.
               </p>
             </div>
             <div>
@@ -149,6 +155,68 @@ satellite.deny=all</pre>
                 identifying the source of the satellite, and thanking the donor.
               </p>
             </div>
+            <div>
+              <a name="subtasks"></a>
+              <h3>Subtasks</h3>
+              <p>
+                The process of building and testing projects is broken into six
+                subtasks.  Those are:
+                <ul>
+                  <li>pre</li>
+                  <li>obtain</li>
+                  <li>prebuild</li>
+                  <li>build</li>
+                  <li>test</li>
+                  <li>post</li>
+                </ul>
+              </p>
+              <p>
+                The pre and post tasks are special cases - simply an opportunity
+                to execute commands before and after the build/test.  If
+                appropriately named extension scripts exist, they are run, but
+                typically they are not used.
+              </p>
+              <p>
+                The obtain task is where the satellite fetches the source code
+                for the project in preparation for the build.  Depending on the
+                SCM system used, this may be one of the following:
+              </p>
+              <pre>git clone &lt;url&gt;
+hg clone &lt;url&gt;
+svn checkout &lt;url&gt;
+cp -a &lt;path&gt;</pre>
+              <p>
+                A local copy is created in the <code>satellite.scratch</code>
+                directory, and is automatically cleaned up after the post
+                subtask.
+              </p>
+              <p>
+                The prebuild subtask is an opportunity to generate a makefile.
+                Typically this subtask involves one of the following commands:
+              </p>
+              <pre>autoconf
+configure
+cmake .</pre>
+              <p>
+                The build subtask is where the project is built.  This is
+                typically one of the following commands:
+              </p>
+              <pre>make</pre>
+              <p>
+                The test subtask is where the project's test suite is run, and
+                is typically one of the following commands:
+              </p>
+              <pre>make test</pre>
+              <p>
+                These subtasks are implemented by a collection of extension
+                scripts that implement type-specific subtasks.  The discovery
+                process of the
+                <a href="dev.html">dev</a>
+                node identifies the subtask types, and it is the diversity of
+                these subtask types that allow flod to support a wide range of
+                different projects.
+              </p>
+            </div>
           </div>
         </div>
       </div>
@@ -180,7 +248,7 @@ satellite.deny=all</pre>
     <script src="assets/js/bootstrap-typeahead.js"></script>
     <script src="assets/js/bootstrap-affix.js"></script>
 
-    <!-- Piwik --> 
+    <!-- Piwik -->
     <script type="text/javascript">
     var pkBaseURL = (("https:" == document.location.protocol) ? "https://tasktools.org/piwik/" : "http://tasktools.org/piwik/");
     document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
