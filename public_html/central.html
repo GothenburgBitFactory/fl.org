@@ -97,6 +97,31 @@
               <a name="data"></a>
               <h3>Data Storage</h3>
               <p>
+                The central server needs a work directory which is used to store
+                all the transcripts, for every platform, every commit, every
+                branch of every project.  While projects and branches can be
+                locked to prevent testing, this data accumulates and can grow to
+                become large.
+              </p>
+              <p>
+                Every notification of a commit results in the creation of a node
+                in the work tree.  Every build/test result is stored within that
+                node.  The structure of the node is simple:
+              </p>
+              <pre>
+work
+└── <project>
+    └── <branch>
+        ├── <commit>
+        │   ├── build.msg
+        │   ├── ...
+        └── tinderbox.html
+              </pre>
+              <p>
+                The 'build.msg' file shown represents the build request, which
+                is a notification from the repository.  This includes all the
+                necessary details to perform the test.  The 'tinderbox.html'
+                file shown is a test report, which is generated per branch.
               </p>
             </div>
             <div>

@@ -210,7 +210,7 @@ Central flod 0.20.0-alpha, tasktools.org:6543, round trip 0.074726 sec.</pre>
                 satellite.  One method is to just run a few builds, in this
                 example, 10 builds:
               </p>
-              <pre>$ flod satellite --10</pre>
+              <pre>$ flod satellite --max-jobs 10</pre>
               <p>
                 After 10 builds, the satellite will exit.  Another option is
                 to run the satellite until the work queue is exhausted, then
@@ -222,7 +222,7 @@ Central flod 0.20.0-alpha, tasktools.org:6543, round trip 0.074726 sec.</pre>
                 run until the queue is exhausted, or until it performs 10
                 builds, whichever comes first:
               </p>
-              <pre>$ flod satellite --10 --exit-on-idle</pre>
+              <pre>$ flod satellite --max-jobs 10 --exit-on-idle</pre>
               <p>
                 The latter commands are useful for when you want to run the
                 satellite from a crontab.  You could, for example, run the
@@ -236,7 +236,7 @@ Central flod 0.20.0-alpha, tasktools.org:6543, round trip 0.074726 sec.</pre>
                 it to just 1 build, and retain the scratch files, so you can
                 see what it did:
               </p>
-              <pre>$ flod satellite --1 --keep
+              <pre>$ flod satellite --max-jobs 1 --keep
 $ ls scratch
 ...</pre>
             </div>

@@ -69,8 +69,8 @@
             makes no attempt to identify cost, feasibility or utility.
           </p>
           <ul>
-            <li>Automatically tagging clean commits</li>
-            <li>Automatically generate dev tarballs from clean commits</li>
+            <li>Automatically tagging clean commits (hooks)</li>
+            <li>Automatically generate dev tarballs from clean commits (hooks)</li>
             <li>Central status dashboard</li>
             <li>Project status widget</li>
             <li>Project commit backfill</li>
@@ -79,8 +79,6 @@
             <li>Dependency enumeration</li>
             <li>Revocable security tokens</li>
             <li>Calculate and display build times</li>
-            <li>Only build 'recent' commits</li>
-            <li>Allow/deny list for branches, specified by project</li>
             <li>Support non-default make targets</li>
             <li>Support MAKEFLAGS</li>
             <li>Satellite 'nice' for builds</li>
@@ -103,9 +101,10 @@
           </p>
           <h4>IMMEDIATE</h4>
           <ul>
-            <li>Allow/deny list of projects for satellites</li>
             <li>Allow/deny list of satellites for central</li>
             <li>Automatic naming/iding/fingerprinting of satellites</li>
+            <li>Generalized hook system, with user-defined events</li>
+            <li>Timeout for lengthy/frozen build/test cycles</li>
           </ul>
           <h4>FUTURE</h4>
           <ul>
